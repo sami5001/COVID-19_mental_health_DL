@@ -31,9 +31,11 @@ sapply(pkg, require, character.only = TRUE)
 }
 
 # applying the function
-packages <- c("ggplot2", "foreign", "qwraps2")
+packages <- c("ggplot2", "plotly", "devtools", "colorspace")
 requiredPkg(packages)
-
+# devtools::install_github("ropensci/plotly")
+# install.packages("plotly")
+# library(plotly)
 ```
 
 ### Import data
@@ -66,13 +68,75 @@ head(transcript)
 
 ```
 
-```{r mean-calc}
+```{r preparing for plotting}
 
+### working with TRANSCRIPT
 
+transcript$Emotion <- factor(transcript$Emotion) # factor
+summary(transcript$Emotion)
+
+### defining subsets
+angry <- subset(transcript, transcript$Emotion=="Angry")
+bored <- subset(transcript, transcript$Emotion=="Bored")
+excited <- subset(transcript, transcript$Emotion=="Excited")
+fear <- subset(transcript, transcript$Emotion=="Fear")
+happy <- subset(transcript, transcript$Emotion=="Happy")
+sad <- subset(transcript, transcript$Emotion=="Sad")
 
 ```
 
 
+```{r plotting}
+
+hist(transcript$Anger, xlab="ANGER")
+hist(transcript$Bored, xlab="BORED")
+
+# plot(transcript$Sr..No., transcript$Anger)
+
+### PLOTLY graphs
+
+f <- list(
+  family = "Courier New, monospace",
+  size = 16,
+  color = "#7f7f7f"
+)
+x <- list(
+  title = "Time (instances)",
+  titlefont = f
+)
+y <- list(
+  title = "Emotion Classification",
+  titlefont = f
+)
+
+fig_group <- plot_ly(
+  type = 'scatter',
+  x = ~transcript$Sr..No.,
+  y = ~transcript$Emotion,
+  text = paste("Make: ", rownames(transcript),
+               "<br>Time (instances): ", transcript$Sr..No.,
+               "<br>Emotion: ", transcript$Emotion,
+               "<br>Anger: ", transcript$Anger),
+  hoverinfo = 'text',
+  mode = 'markers',
+  transforms = list(
+    list(
+      type = 'groupby',
+      groups = transcript$Emotion,
+      styles = list(
+        list(target = 2, value = list(marker =list(color = 'green'))),
+        list(target = 4, value = list(marker =list(color = 'blue'))),
+        list(target = 6, value = list(marker =list(color = 'red'))),
+        list(target = 8, value = list(marker =list(color = 'black')))
+      )
+      )
+    )
+  )
+fig_group <- fig_group %>% layout(title = "OpenFace Emotion Classification",
+                                  font = f, xaxis = x, yaxis = y)
+fig_group
+
+```
 
 
 
