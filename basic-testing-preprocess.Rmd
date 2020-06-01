@@ -2,29 +2,47 @@
 title: "Basic Testing"
 author: "Sami Adnan"
 date: "6/1/2020"
-output: html_document
+output:
+  html_document:
+    code_folding: show
+    highlight: breezedark
+    theme: darkly
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+
+
+- Loading packages, auto installation if needed
+```{r load packages, results='hide', message=FALSE, warning=FALSE}
+# creating requiredPkg function: install and load multiple R packages.
+# for checking to see if required packages are installed.
+# install if needed, then load into the R session.
+
+requiredPkg <- function(pkg){
+new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
+if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+sapply(pkg, require, character.only = TRUE)
+}
+
+# applying the function
+packages <- c("ggplot2", "foreign", "qwraps2")
+requiredPkg(packages)
+
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+### Import data
+- Setting directory
+- Loading the dataset 
+```{r load data, results='hide', message=FALSE, warning=FALSE}
+#setting working directory
+(WD <- getwd())
+if (!is.null(WD)) setwd(WD)
+# setwd("")
+dat <- read.table("feasibility/", to.data.frame = TRUE)
 ```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
