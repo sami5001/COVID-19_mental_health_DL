@@ -39,7 +39,7 @@ requiredPkg(packages)
 ### Import data
 - Setting directory
 - Loading the dataset 
-```{r load data, results='hide', message=FALSE, warning=FALSE}
+```{r load data, message=FALSE, warning=FALSE, results='hide'}
 #setting working directory
 #(WD <- getwd())
 #if (!is.null(WD)) setwd(WD)
@@ -66,6 +66,11 @@ head(transcript)
 
 ```
 
+```{r mean-calc}
+
+
+
+```
 
 
 

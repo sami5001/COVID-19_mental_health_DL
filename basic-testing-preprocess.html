@@ -1709,7 +1709,25 @@ div.tocify {
 <span id="cb2-2"><a href="#cb2-2"></a><span class="co">#(WD &lt;- getwd())</span></span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="co">#if (!is.null(WD)) setwd(WD)</span></span>
 <span id="cb2-4"><a href="#cb2-4"></a><span class="co"># setwd(&quot;&quot;)</span></span>
-<span id="cb2-5"><a href="#cb2-5"></a>faudata &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">&quot;feasibilityData/FAU.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span></code></pre></div>
+<span id="cb2-5"><a href="#cb2-5"></a>faudata &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">&quot;feasibilityData/FAU.csv&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="kw">head</span>(faudata)</span>
+<span id="cb2-7"><a href="#cb2-7"></a></span>
+<span id="cb2-8"><a href="#cb2-8"></a>fauemo &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">&quot;feasibilityData/FAU_Emotions.csv&quot;</span>,</span>
+<span id="cb2-9"><a href="#cb2-9"></a>                     <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">head</span>(fauemo)</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>landmarks &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">&quot;feasibilityData/Landmarks.csv&quot;</span>,</span>
+<span id="cb2-13"><a href="#cb2-13"></a>                     <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="kw">head</span>(landmarks)</span>
+<span id="cb2-15"><a href="#cb2-15"></a></span>
+<span id="cb2-16"><a href="#cb2-16"></a>speech &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">header =</span> <span class="ot">TRUE</span>, <span class="dt">file =</span> <span class="st">&quot;feasibilityData/Speech_Overview.csv&quot;</span>,</span>
+<span id="cb2-17"><a href="#cb2-17"></a>                     <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="kw">head</span>(speech)</span>
+<span id="cb2-19"><a href="#cb2-19"></a></span>
+<span id="cb2-20"><a href="#cb2-20"></a>transcript &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="dt">header =</span> <span class="ot">TRUE</span>,</span>
+<span id="cb2-21"><a href="#cb2-21"></a>                         <span class="dt">file =</span> <span class="st">&quot;feasibilityData/Transcipt_Overview.csv&quot;</span>,</span>
+<span id="cb2-22"><a href="#cb2-22"></a>                         <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span>)</span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="kw">head</span>(transcript)</span></code></pre></div>
 </div>
 
 
