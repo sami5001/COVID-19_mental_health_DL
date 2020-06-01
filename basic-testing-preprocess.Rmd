@@ -31,11 +31,12 @@ sapply(pkg, require, character.only = TRUE)
 }
 
 # applying the function
-packages <- c("ggplot2", "plotly", "devtools", "colorspace")
+packages <- c("ggplot2", "plotly", "devtools", "colorspace", "tidyr", "plot_ly")
 requiredPkg(packages)
 # devtools::install_github("ropensci/plotly")
 # install.packages("plotly")
 # library(plotly)
+# library(plot_ly)
 ```
 
 ### Import data
@@ -86,7 +87,7 @@ sad <- subset(transcript, transcript$Emotion=="Sad")
 ```
 
 
-```{r plotting}
+```{r plotting, message=FALSE, warning=FALSE}
 
 hist(transcript$Anger, xlab="ANGER")
 hist(transcript$Bored, xlab="BORED")
@@ -97,7 +98,12 @@ hist(transcript$Bored, xlab="BORED")
 
 f <- list(
   family = "Courier New, monospace",
-  size = 16,
+  size = 18,
+  color = "#7f7f7f"
+)
+titleFont <- list(
+  family = "Courier New, monospace",
+  size = 18,
   color = "#7f7f7f"
 )
 x <- list(
@@ -108,6 +114,9 @@ y <- list(
   title = "Emotion Classification",
   titlefont = f
 )
+margin <- list(l = 50, r=50, b=100, 
+               t=100, pad=4)
+
 
 fig_group <- plot_ly(
   type = 'scatter',
@@ -127,16 +136,104 @@ fig_group <- plot_ly(
         list(target = 2, value = list(marker =list(color = 'green'))),
         list(target = 4, value = list(marker =list(color = 'blue'))),
         list(target = 6, value = list(marker =list(color = 'red'))),
-        list(target = 8, value = list(marker =list(color = 'black')))
+        list(target = 8, value = list(marker =list(color = 'white')))
       )
       )
     )
   )
 fig_group <- fig_group %>% layout(title = "OpenFace Emotion Classification",
-                                  font = f, xaxis = x, yaxis = y)
+                                  font = titleFont, xaxis = x, yaxis = y,
+                                  margin = margin,
+                                  plot_bgcolor = "black",
+                                  paper_bgcolor = "black",
+                                  autosize = FALSE,
+                                  width = 1000,
+                                  height = 1000
+                                  )
 fig_group
 
 ```
 
+
+```{r individual emotion means, message=FALSE, warning=FALSE}
+
+par(mfcol = c(2,3), cex = 1)
+plot(transcript$Sr..No., transcript$Anger, type = "l", 
+     xlab = "Time (instances)", ylab = "Anger")
+plot(transcript$Sr..No., transcript$Bored, type = "l", 
+     xlab = "Time (instances)", ylab = "Bored")
+plot(transcript$Sr..No., transcript$Excited, type = "l", 
+     xlab = "Time (instances)", ylab = "Excited")
+plot(transcript$Sr..No., transcript$Fear, type = "l", 
+     xlab = "Time (instances)", ylab = "Fear")
+plot(transcript$Sr..No., transcript$Happy, type = "l", 
+     xlab = "Time (instances)", ylab = "Happy")
+plot(transcript$Sr..No., transcript$Sad, type = "l", 
+     xlab = "Time (instances)", ylab = "Sad")
+mtext("Emoiton Classification (all channels)", side = 3, line = -1, outer = TRUE)
+
+par(mfrow=c(1,1))
+
+f <- list(
+  family = "Courier New, monospace",
+  size = 16,
+  color = "#7f7f7f"
+)
+titleFont <- list(
+  family = "Courier New, monospace",
+  size = 18,
+  color = "#7f7f7f"
+)
+x <- list(
+  title = "Time (instances)",
+  titlefont = f
+)
+y <- list(
+  title = "Probability",
+  range = c(0,1),
+  titlefont = f
+)
+margin <- list(l = 50, r=50, b=100, 
+               t=100, pad=4)
+#y <- list(
+#  title = "Probability",
+#  titlefont = f,
+#  max = 1
+#)
+
+
+fig1 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Anger)
+fig1 <- fig1 %>% add_lines(name = ~"Anger")
+fig2 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Bored)
+fig2 <- fig2 %>% add_lines(name = ~"Bored")
+fig3 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Excited)
+fig3 <- fig3 %>% add_lines(name = ~"Excited")
+fig4 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Fear)
+fig4 <- fig4 %>% add_lines(name = ~"Fear")
+fig5 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Happy)
+fig5 <- fig5 %>% add_lines(name = ~"Happy")
+fig6 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Sad)
+fig6 <- fig6 %>% add_lines(name = ~"Sad")
+fig_group2 <- subplot(fig1, fig2, fig3, fig4, fig5, fig6, nrows = 6, shareX = TRUE)
+#fig_group2 <- plot_ly(width = 1000, height = 1000)
+fig_group2 <- fig_group2 %>% layout(xaxis = x,
+                                    yaxis = y,
+                                    title = "Emotion Classification (all channels)",
+                                    font = titleFont,
+                                    plot_bgcolor = "black",
+                                    paper_bgcolor = "black",
+                                    autosize = FALSE,
+                                    width = 1000,
+                                    height = 1000,
+                                    margin = margin
+                                    )
+
+#fig_group2 <- fig_group2 %>% subplot(nrows = 6, shareX = TRUE)
+
+fig_group2
+fig1
+
+
+```
 
 
