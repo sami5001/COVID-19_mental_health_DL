@@ -41,8 +41,33 @@ requiredPkg(packages)
 - Loading the dataset 
 ```{r load data, results='hide', message=FALSE, warning=FALSE}
 #setting working directory
-(WD <- getwd())
-if (!is.null(WD)) setwd(WD)
+#(WD <- getwd())
+#if (!is.null(WD)) setwd(WD)
 # setwd("")
-dat <- read.table("feasibility/", to.data.frame = TRUE)
+faudata <- read.table(header = TRUE, file = "feasibilityData/FAU.csv", sep = ",")
+head(faudata)
+
+fauemo <- read.table(header = TRUE, file = "feasibilityData/FAU_Emotions.csv",
+                     sep = ",")
+head(fauemo)
+
+landmarks <- read.table(header = TRUE, file = "feasibilityData/Landmarks.csv",
+                     sep = ",")
+head(landmarks)
+
+speech <- read.table(header = TRUE, file = "feasibilityData/Speech_Overview.csv",
+                     sep = ",")
+head(speech)
+
+transcript <- read.table(header = TRUE,
+                         file = "feasibilityData/Transcipt_Overview.csv",
+                         sep = ",")
+head(transcript)
+
 ```
+
+
+
+
+
+

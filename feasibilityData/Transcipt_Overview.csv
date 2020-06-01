@@ -23,7 +23,7 @@ Sr. No.,Statement,Emotion,Sentiment,Anger,Bored,Excited,Fear,Happy,Sad,Keywords
 22,"Hi. It's 9:00 AM, and I feel angry for having to stay at home.",Angry,negative,0.4426027918,0.1297535114,0.0230367257,0.1300685422,0.0327732415,0.2417651873,"""angry"",""home"""
 23,I it's 3:00 p.m. and I feel a pretty good.,Excited,positive,0.0271438249,0.038558129,0.4054467972,0.1586236443,0.3571867213,0.0130408834,"""pretty good"""
 24,It is 9:00 p.m. and I am feeling very depressed.,Sad,negative,0.0793040857,0.0370534743,0.0101937151,0.1677937659,0.0089080571,0.6967469019,No Keywords
-25,"Hello. It's 9:00 AM, and I feel very fresh.",Excited,positive,0.058362458,0.1365738088,0.4255580947,0.1093633922,0.2496906211,0.0204516252,No Keywords
+25,"Hello. It's 9:00 AM and I feel very fresh.",Excited,positive,0.058362458,0.1365738088,0.4255580947,0.1093633922,0.2496906211,0.0204516252,No Keywords
 26,"Hey, it's 3:00 p.m. and I feel very bored.",Bored,negative,0.1228016639,0.3612797056,0.035662285,0.1507854677,0.0438362777,0.2856346002,No Keywords
 27,"Hi, it's nine p.m. and I am very nervous because of so many assignments.",Fear,negative,0.0948369896,0.0205399225,0.0119156017,0.4421629943,0.0184683974,0.4120760946,"""nine"",""nervous"",""many assignments"""
 28,"Hi, it's 8:00 in the morning, and I feel very energetic and rejuvenated.",Excited,neutral,0.0457518383,0.056459677,0.4478958015,0.1268392027,0.3077023092,0.0153511712,"""morning"""
