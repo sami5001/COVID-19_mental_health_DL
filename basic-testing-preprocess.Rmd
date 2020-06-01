@@ -155,7 +155,7 @@ fig_group
 ```
 
 
-```{r individual emotion means, message=FALSE, warning=FALSE}
+```{r individual emotion means, message=TRUE, warning=TRUE}
 
 par(mfcol = c(2,3), cex = 1)
 plot(transcript$Sr..No., transcript$Anger, type = "l", 
@@ -204,12 +204,16 @@ margin <- list(l = 50, r=50, b=100,
 
 fig1 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Anger)
 fig1 <- fig1 %>% add_lines(name = ~"Anger")
+fig1 <- fig1 %>% layout(yaxis = list(range(c(0,1))))
 fig2 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Bored)
 fig2 <- fig2 %>% add_lines(name = ~"Bored")
+fig2 <- fig2 %>% layout(yaxis = list(range(c(0,1))))
 fig3 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Excited)
 fig3 <- fig3 %>% add_lines(name = ~"Excited")
+fig3 <- fig3 %>% layout(yaxis = list(range(c(0,1))))
 fig4 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Fear)
 fig4 <- fig4 %>% add_lines(name = ~"Fear")
+fig4 <- fig4 %>% layout(yaxis = list(range(c(0,1))))
 fig5 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Happy)
 fig5 <- fig5 %>% add_lines(name = ~"Happy")
 fig6 <- plot_ly(transcript, x = ~transcript$Sr..No., y = ~transcript$Sad)
@@ -235,5 +239,32 @@ fig1
 
 
 ```
+
+
+#angerMean1 = mean(transcript$anger)
+
+```{r box plots}
+
+#box_group <- plot_ly(transcript$Anger, y = ~transcript$Sr..No., color = ~cut, type = "box")
+
+#box_group
+
+heat_group <- plot_ly(transcript, x = ~log(transcript$Sr..No.), y = ~log(transcript$Anger))
+subplot(
+  add_histogram2d(heat_group) %>%
+    colorbar(title = "default") %>%
+    layout(xaxis = list(title = "default")),
+  add_histogram2d(heat_group, zsmooth = "best") %>%
+    colorbar(title = "zsmooth") %>%
+    layout(xaxis = list(title = "zsmooth")),
+  add_histogram2d(heat_group, nbinsx = 60, nbinsy = 60) %>%
+    colorbar(title = "nbins") %>%
+    layout(xaxis = list(title = "nbins")),
+  shareY = TRUE, titleX = TRUE
+)
+
+
+```
+
 
 
