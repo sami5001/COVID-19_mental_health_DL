@@ -1,6 +1,6 @@
 ---
-title: "Basic Testing"
-author: "Sami Adnan"
+title: "Digital self-monitoring of mental health in quarantine and self-isolation"
+author: "Sami Adnan, Siddhant Gadamsetti, Ipsita Bhaduri"
 date: "6/1/2020"
 output:
   html_document:
@@ -16,7 +16,7 @@ output:
 ---
 
 
-
+# Data Exploration and Feasibility Study
 - Loading packages, auto installation if needed
 ```{r load packages, results='hide', message=FALSE, warning=FALSE}
 # creating requiredPkg function: install and load multiple R packages.
@@ -69,6 +69,9 @@ head(transcript)
 
 ```
 
+
+- Preparing data for plotting and exploratory statistics
+
 ```{r preparing for plotting}
 
 ### working with TRANSCRIPT
@@ -86,6 +89,7 @@ sad <- subset(transcript, transcript$Emotion=="Sad")
 
 ```
 
+- Testing plots with plotly
 
 ```{r plotting, message=FALSE, warning=FALSE}
 
@@ -97,14 +101,14 @@ hist(transcript$Bored, xlab="BORED")
 ### PLOTLY graphs
 
 f <- list(
-  family = "Courier New, monospace",
-  size = 18,
-  color = "#7f7f7f"
+  family = "Arial, Roboto, Courier New, monospace",
+  size = 20,
+  color = "white"
 )
 titleFont <- list(
-  family = "Courier New, monospace",
+  family = "Arial, Roboto, Courier New, monospace",
   size = 18,
-  color = "#7f7f7f"
+  color = "white"
 )
 x <- list(
   title = "Time (instances)",
@@ -154,6 +158,7 @@ fig_group
 
 ```
 
+- Emotions plotting
 
 ```{r individual emotion means, message=TRUE, warning=TRUE}
 
@@ -175,14 +180,14 @@ mtext("Emoiton Classification (all channels)", side = 3, line = -1, outer = TRUE
 par(mfrow=c(1,1))
 
 f <- list(
-  family = "Courier New, monospace",
-  size = 16,
-  color = "#7f7f7f"
+  family = "Arial, Courier New, monospace",
+  size = 18,
+  color = "white"
 )
 titleFont <- list(
-  family = "Courier New, monospace",
-  size = 18,
-  color = "#7f7f7f"
+  family = "Arial, Courier New, monospace",
+  size = 20,
+  color = "white"
 )
 x <- list(
   title = "Time (instances)",

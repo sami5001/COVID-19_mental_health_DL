@@ -1,0 +1,31 @@
+Day,Time,Statement,Emotion,Sentiment,Positive,Neutral,Negative,Anger,Bored,Excited,Fear,Happy,Sad,Keywords
+Sun,9,"Hi. It's nine o'clock in the morning, and I feel great, I feel nice.",Happy,positive,0.618,0.347,0.035,0.030320471,0.076178686,0.303502829,0.121400854,0.445544348,0.023052812,"""nine oclock"",""morning"",""great"""
+Sun,15,"Hi, it's 3:00 p.m. and I'm feeling good.",Excited,positive,0.639,0.321,0.04,0.029995274,0.025050658,0.532257499,0.090887825,0.313528861,0.008279883,"""good"""
+Sun,21,Hi. It's nine p.m. and I feel OK.,Happy,neutral,0.174,0.753,0.073,0.054823815,0.033681781,0.256641576,0.176278332,0.43839605,0.040178446,No Keywords
+Mon,9,It's nine o'clock in the morning and I feel fine.,Happy,neutral,0.34,0.528,0.132,0.039244604,0.079461417,0.240250792,0.068417541,0.537529007,0.03509664,"""nine oclock"",""morning"""
+Mon,15,Hi. It's 3:00 in the afternoon. It's very gloomy and I don't feel very good.,Sad,negative,0.003,0.229,0.768,0.050590624,0.095340771,0.023254282,0.28621815,0.031480983,0.51311519,"""afternoon"",""gloomy"",""good"""
+Mon,21,"Hi, it's nine p.m. and I feel great. It was a productive day. I feel nice.",Happy,positive,0.767,0.212,0.021,0.040046466,0.02632485,0.404072298,0.11011165,0.412735102,0.006709634,"""nine"",""productive day"""
+Tue,9,"It's 9:00 in the morning, and I don't feel anything.",Bored,negative,0.011,0.25,0.74,0.12754608,0.357058307,0.032565628,0.185231415,0.042728349,0.254870222,"""morning"",""feel anything"""
+Tue,15,Hi. It's 3:00 p.m.. I feel great.,Excited,positive,0.481,0.43,0.089,0.068642187,0.053813793,0.367514438,0.148377928,0.311234784,0.050416871,No Keywords
+Wed,9,Hi. It's 10:00 AM and I feel a little stressed.,Sad,negative,0.007,0.211,0.783,0.10849976,0.143789481,0.023937644,0.335937434,0.033277237,0.354558445,"""little"""
+Wed,15,"Hi, it's three thirty in the afternoon and I'm a little anxious right now.",Fear,negative,0.046,0.243,0.711,0.020417661,0.006922554,0.015195878,0.696594456,0.026139521,0.234729929,"""three thirty"",""afternoon"",""little anxious"""
+Wed,21,"Hi, it's 10 p.m. and I feel all right.",Happy,neutral,0.432,0.52,0.049,0.061479343,0.017045075,0.367308018,0.085494679,0.452744757,0.015928128,No Keywords
+Thu,9,It is 9:00 in the morning and I am feeling very energetic.,Excited,negative,0.108,0.305,0.588,0.072554418,0.159540459,0.28398502,0.229950193,0.15441697,0.09955294,"""morning"",""energetic"""
+Thu,15,It is 3:00 in the afternoon and I feel a little tired.,Bored,negative,0.017,0.265,0.718,0.012014723,0.819471051,0.003522338,0.061678609,0.004869621,0.098443659,"""afternoon"",""little"""
+Fri,15,It is 3:00 in the afternoon and I feel a little tired.,Bored,negative,0.017,0.265,0.718,0.012014723,0.819471051,0.003522338,0.061678609,0.004869621,0.098443659,"""afternoon"",""little"""
+Fri,21,Hi. It's 9:00 p.m. and I'm very sleepy after a long day.,Bored,neutral,0.047,0.654,0.298,0.010066031,0.870285017,0.009892817,0.035839748,0.014559424,0.059356963,"""long day"""
+Sat,9,"Hi. It is 9:00 am, and I already feel a little restless.",Sad,negative,0.015,0.341,0.644,0.061749393,0.253581888,0.020184306,0.234812951,0.022387506,0.407283957,"""little restless"""
+Sat,15,"Hi, it's 3:00 p.m. and I'm a little sad for staying at home for so long.",Sad,negative,0.01,0.163,0.827,0.035606837,0.059698088,0.023865491,0.149377667,0.034332407,0.697119511,"""little sad"",""home"""
+Sat,21,Hi. It's nine p.m. and I'm feeling all right.,Excited,positive,0.499,0.441,0.061,0.053771155,0.025089097,0.42131589,0.117150291,0.369502488,0.013171079,No Keywords
+Sun,9,"Hi, it's a 8:00 a.m.  and I feel annoyed.",Angry,negative,0.003,0.067,0.93,0.409189156,0.161421696,0.014601637,0.137599767,0.031022384,0.246165361,No Keywords
+Sun,15,"Hi, it's 3:00 p.m. and I feel like sleeping only. I'm tired.",Bored,neutral,0.047,0.54,0.413,0.016402082,0.819552916,0.01090768,0.044433079,0.015300667,0.093403576,No Keywords
+Sun,21,"Hey, it's nine p.m. and I'm still tired. I want to sleep.",Bored,negative,0.031,0.44,0.529,0.02454094,0.852365186,0.003770393,0.037597804,0.005751603,0.075974075,"""nine"""
+Mon,9,"Hi. It's 9:00 AM, and I feel angry for having to stay at home.",Angry,negative,0.003,0.105,0.892,0.442602792,0.129753511,0.023036726,0.130068542,0.032773242,0.241765187,"""angry"",""home"""
+Mon,15,I it's 3:00 p.m. and I feel a pretty good.,Excited,positive,0.756,0.22,0.025,0.027143825,0.038558129,0.405446797,0.158623644,0.357186721,0.013040883,"""pretty good"""
+Mon,21,It is 9:00 p.m. and I am feeling very depressed.,Sad,negative,0.009,0.073,0.919,0.079304086,0.037053474,0.010193715,0.167793766,0.008908057,0.696746902,No Keywords
+Tue,9,"Hello. It's 9:00 AM, and I feel very fresh.",Excited,positive,0.604,0.345,0.051,0.058362458,0.136573809,0.425558095,0.109363392,0.249690621,0.020451625,No Keywords
+Tue,15,"Hey, it's 3:00 p.m. and I feel very bored.",Bored,negative,0.07,0.263,0.667,0.122801664,0.361279706,0.035662285,0.150785468,0.043836278,0.2856346,No Keywords
+Tue,21,"Hi, it's nine p.m. and I am very nervous because of so many assignments.",Fear,negative,0.015,0.207,0.778,0.09483699,0.020539923,0.011915602,0.442162994,0.018468397,0.412076095,"""nine"",""nervous"",""many assignments"""
+Wed,9,"Hi, it's 8:00 in the morning, and I feel very energetic and rejuvenated.",Excited,neutral,0.256,0.601,0.143,0.045751838,0.056459677,0.447895802,0.126839203,0.307702309,0.015351171,"""morning"""
+Wed,15,"Hey, it's 3:00 p.m. and I feel so lost and tired and clueless.",Bored,negative,0.03,0.138,0.832,0.12346397,0.307313841,0.03185678,0.199808297,0.036861375,0.300695738,No Keywords
+Wed,21,It is 9:00 p.m. and I feel a little sleepy and also a little tired.,Bored,negative,0.05,0.432,0.518,0.00953575,0.846333888,0.005582279,0.053731543,0.008149043,0.076667496,"""little"""

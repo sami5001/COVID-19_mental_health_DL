@@ -1,0 +1,12 @@
+Day,Sentiment_1,Positive_1,Negative_1,Sentiment_2,Positive_2,Negative_2,Sentiment_3,Positive_3,Negative_3
+Sun,Stressed,0,1.38,Happy,3.34,0.59,N.A,N.A,N.A
+Mon,Happy,0.42,0,Happy,4.22,0.66,Stressed,0.03,3.83
+Tue,Stressed,0.13,2.19,Stressed,0,0.38,Happy,5.77,0.34
+Wed,Happy,2.32,0.81,Stressed,0,0.36,Happy,5.64,0.72
+Thu,Stressed,0,1,Happy,2.44,1.92,Happy,5.23,1.36
+Fri,N.A,N.A,N.A,Happy,3.55,1.06,Happy,5.12,1.62
+Sat,Stressed,0.81,1,Happy,0.02,0,Happy,5.04,1.43
+Sun,Stressed,0,0.27,Stressed,0.16,0.16,Happy,5.56,0.43
+Mon,Stressed,0,0,Stressed,0,0.07,Stressed,3.42,3.63
+Tue,Happy,3.36,0,Happy,3.5,0,Happy,4.86,1.72
+Wed,Happy,0.56,0,N.A,N.A,N.A,Stressed,0,4.37

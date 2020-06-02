@@ -1,0 +1,12 @@
+Day,Sentiment_1,Positive_1,Neutral_1,Negative_1,Sentiment_2,Positive_2,Neutral_2,Negative_2,Sentiment_3,Positive_3,Neutral_3,Negative_3
+Sun,neutral,0.174,0.753,0.073,negative,0.004,0.043,0.954,N.A,N.A,N.A,N.A
+Mon,positive,0.767,0.212,0.021,positive,0.906,0.08,0.014,negative,0.052,0.248,0.7
+Tue,N.A,N.A,N.A,N.A,negative,0.006,0.04,0.953,negative,0.194,0.369,0.437
+Wed,neutral,0.432,0.52,0.049,positive,0.715,0.226,0.059,negative,0.007,0.055,0.938
+Thu,N.A,N.A,N.A,N.A,negative,0.005,0.05,0.945,negative,0.061,0.277,0.662
+Fri,neutral,0.047,0.654,0.298,negative,0.001,0.018,0.98,positive,0.843,0.137,0.02
+Sat,positive,0.499,0.441,0.061,positive,0.801,0.163,0.036,positive,0.768,0.196,0.035
+Sun,negative,0.031,0.44,0.529,positive,0.913,0.066,0.021,positive,0.745,0.21,0.044
+Mon,negative,0.009,0.073,0.919,positive,0.829,0.146,0.026,positive,0.512,0.358,0.129
+Tue,negative,0.015,0.207,0.778,negative,0.002,0.052,0.946,negative,0.141,0.261,0.598
+Wed,negative,0.05,0.432,0.518,N.A,N.A,N.A,N.A,negative,0.024,0.213,0.763
