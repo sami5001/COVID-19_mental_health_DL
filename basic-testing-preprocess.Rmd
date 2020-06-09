@@ -93,8 +93,11 @@ sad <- subset(transcript, transcript$Emotion=="Sad")
 
 ```{r plotting, message=FALSE, warning=FALSE}
 
-hist(transcript$Anger, xlab="ANGER")
-hist(transcript$Bored, xlab="BORED")
+hist(transcript$Anger, xlab="ANGER", main = " ", ylim = c(0,30), xlim = c(0,1))
+hist(transcript$Bored, xlab="BORED", main = " ", ylim = c(0,30), xlim = c(0,1))
+hist(transcript$Bored, xlab="test", main = " ")
+
+plot(ecdf(transcript$Anger))
 
 # plot(transcript$Sr..No., transcript$Anger)
 
@@ -103,12 +106,12 @@ hist(transcript$Bored, xlab="BORED")
 f <- list(
   family = "Arial, Roboto, Courier New, monospace",
   size = 20,
-  color = "white"
+  color = "grey"
 )
 titleFont <- list(
   family = "Arial, Roboto, Courier New, monospace",
   size = 18,
-  color = "white"
+  color = "grey"
 )
 x <- list(
   title = "Time (instances)",
@@ -164,17 +167,17 @@ fig_group
 
 par(mfcol = c(2,3), cex = 1)
 plot(transcript$Sr..No., transcript$Anger, type = "l", 
-     xlab = "Time (instances)", ylab = "Anger")
+     xlab = "Time (instances)", ylab = "Anger", ylim = c(0,1))
 plot(transcript$Sr..No., transcript$Bored, type = "l", 
-     xlab = "Time (instances)", ylab = "Bored")
+     xlab = "Time (instances)", ylab = "Bored", ylim = c(0,1))
 plot(transcript$Sr..No., transcript$Excited, type = "l", 
-     xlab = "Time (instances)", ylab = "Excited")
+     xlab = "Time (instances)", ylab = "Excited", ylim = c(0,1))
 plot(transcript$Sr..No., transcript$Fear, type = "l", 
-     xlab = "Time (instances)", ylab = "Fear")
+     xlab = "Time (instances)", ylab = "Fear", ylim = c(0,1))
 plot(transcript$Sr..No., transcript$Happy, type = "l", 
-     xlab = "Time (instances)", ylab = "Happy")
+     xlab = "Time (instances)", ylab = "Happy", ylim = c(0,1))
 plot(transcript$Sr..No., transcript$Sad, type = "l", 
-     xlab = "Time (instances)", ylab = "Sad")
+     xlab = "Time (instances)", ylab = "Sad", ylim = c(0,1))
 mtext("Emoiton Classification (all channels)", side = 3, line = -1, outer = TRUE)
 
 par(mfrow=c(1,1))
@@ -182,12 +185,12 @@ par(mfrow=c(1,1))
 f <- list(
   family = "Arial, Courier New, monospace",
   size = 18,
-  color = "white"
+  color = "grey"
 )
 titleFont <- list(
   family = "Arial, Courier New, monospace",
   size = 20,
-  color = "white"
+  color = "grey"
 )
 x <- list(
   title = "Time (instances)",

@@ -1,0 +1,314 @@
+---
+title: "Digital self-monitoring of mental health in quarantine and self-isolation"
+author: "Sami Adnan, Siddhant Gadamsetti, Ipsita Bhaduri"
+date: "6/1/2020"
+output:
+  html_document:
+    code_folding: show
+    highlight: breezedark
+    theme: darkly
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scroll: yes
+  pdf_document:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load Data
+
+```{r Face}
+Person_1=read.csv(file="feasibilityData/feasibilityMidterm/Dataset_4.csv")
+Person_2=read.csv(file="feasibilityData/feasibilityMidterm/Dataset_5.csv")
+Person_3=read.csv(file="feasibilityData/feasibilityMidterm/Dataset_6.csv")
+
+Person_1$Day<-as.factor(Person_1$Day)
+Person_1$Time<-as.factor(Person_1$Time)
+Person_1$Fc_Sentiment<-as.factor(Person_1$Fc_Sentiment)
+Person_2$Day<-as.factor(Person_2$Day)
+Person_2$Time<-as.factor(Person_2$Time)
+Person_2$Fc_Sentiment<-as.factor(Person_2$Fc_Sentiment)
+Person_3$Day<-as.factor(Person_3$Day)
+Person_3$Time<-as.factor(Person_3$Time)
+Person_3$Fc_Sentiment<-as.factor(Person_3$Fc_Sentiment)
+
+Dat<-read.csv(file="feasibilityData/feasibilityMidterm/Data.csv")
+Dat$Fc_Sentiment<-as.factor(Dat$Fc_Sentiment)
+
+Morn1<-Person_1[1:11,]
+Aft1<-Person_1[12:22,]
+Night1<-Person_1[23:33,]
+Morn2<-Person_2[1:11,]
+Aft2<-Person_2[12:22,]
+Night2<-Person_2[23:33,]
+Morn3<-Person_3[1:11,]
+Aft3<-Person_3[12:22,]
+Night3<-Person_3[23:33,]
+```
+
+## Dataset 1 Line Plot
+
+```{r Person_1}
+#package installation
+#install.packages("easyGgplot2")
+#install.packages("devtools")
+#library(devtools)
+#install_github("kassambara/easyGgplot2")
+#install.packages('ggplot2', dependencies = TRUE)
+#load packages
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(easyGgplot2) #not working with R 3.6.2
+
+
+
+Hp_Fc_plot_P1<-ggplot2.lineplot(data=Person_1, xName='ID', yName = 'Fc_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(1:7), xtitle = "Day", ytitle = "Happiness",mainTitle = "FAU Positive Feelings Overlay" )
+Hp_Sp_plot_P1<-ggplot2.lineplot(data=Person_1, xName='ID', yName = 'Sp_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Happiness",mainTitle = "Speech Positive Feelings Overlay" )
+Hp_Tr_plot_P1<-ggplot2.lineplot(data=Person_1, xName='ID', yName = 'Tr_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Happiness",mainTitle = "Transcript Positive Feelings Overlay" )
+
+ggplot2.multiplot(Hp_Fc_plot_P1,Hp_Sp_plot_P1,Hp_Tr_plot_P1, cols=1)
+
+
+St_Fc_plot_P1<-ggplot2.lineplot(data=Person_1, xName='ID', yName = 'Fc_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(1:7), xtitle = "Day", ytitle = "Stress",mainTitle = "FAU Negative Feelings Overlay" )
+St_Sp_plot_P1<-ggplot2.lineplot(data=Person_1, xName='ID', yName = 'Sp_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Stress",mainTitle = "Speech Negative Feelings Overlay" )
+St_Tr_plot_P1<-ggplot2.lineplot(data=Person_1, xName='ID', yName = 'Tr_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Stress",mainTitle = "Transcript Negative Feelings Overlay" )
+
+```
+
+## Dataset 2 Line Plot
+
+```{r Person_2}
+Hp_Fc_plot_P2<-ggplot2.lineplot(data=Person_2, xName='ID', yName = 'Fc_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(1:7), xtitle = "Day", ytitle = "Happiness",mainTitle = "FAU Positive Feelings Overlay" )
+Hp_Sp_plot_P2<-ggplot2.lineplot(data=Person_2, xName='ID', yName = 'Sp_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Happiness",mainTitle = "Speech Positive Feelings Overlay" )
+Hp_Tr_plot_P2<-ggplot2.lineplot(data=Person_2, xName='ID', yName = 'Tr_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Happiness",mainTitle = "Transcript Positive Feelings Overlay" )
+
+ggplot2.multiplot(Hp_Fc_plot_P2,Hp_Sp_plot_P2,Hp_Tr_plot_P2, cols=1)
+
+
+St_Fc_plot_P2<-ggplot2.lineplot(data=Person_2, xName='ID', yName = 'Fc_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(1:7), xtitle = "Day", ytitle = "Stress",mainTitle = "FAU Negative Feelings Overlay" )
+St_Sp_plot_P2<-ggplot2.lineplot(data=Person_2, xName='ID', yName = 'Sp_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Stress",mainTitle = "Speech Negative Feelings Overlay" )
+St_Tr_plot_P2<-ggplot2.lineplot(data=Person_2, xName='ID', yName = 'Tr_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Stress",mainTitle = "Transcript Negative Feelings Overlay" )
+
+ggplot2.multiplot(St_Fc_plot_P2,St_Sp_plot_P2,St_Tr_plot_P2, cols=1)
+
+```
+
+## Dataset 3 Line Plot
+
+```{r Person_3}
+Hp_Fc_plot_P3<-ggplot2.lineplot(data=Person_3, xName='ID', yName = 'Fc_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(1:7), xtitle = "Day", ytitle = "Happiness",mainTitle = "FAU Positive Feelings Overlay" )
+Hp_Sp_plot_P3<-ggplot2.lineplot(data=Person_3, xName='ID', yName = 'Sp_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Happiness",mainTitle = "Speech Positive Feelings Overlay" )
+Hp_Tr_plot_P3<-ggplot2.lineplot(data=Person_3, xName='ID', yName = 'Tr_Happy',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Happiness",mainTitle = "Transcript Positive Feelings Overlay" )
+
+ggplot2.multiplot(Hp_Fc_plot_P3,Hp_Sp_plot_P3,Hp_Tr_plot_P3, cols=1)
+
+
+St_Fc_plot_P3<-ggplot2.lineplot(data=Person_3, xName='ID', yName = 'Fc_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(1:7), xtitle = "Day", ytitle = "Stress",mainTitle = "FAU Negative Feelings Overlay" )
+St_Sp_plot_P3<-ggplot2.lineplot(data=Person_3, xName='ID', yName = 'Sp_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Stress",mainTitle = "Speech Negative Feelings Overlay" )
+St_Tr_plot_P3<-ggplot2.lineplot(data=Person_3, xName='ID', yName = 'Tr_Stressed',
+                 groupName='Time', legendPosition="top",
+                 linetype="solid",addPoint=TRUE, shape=19, pointSize=3, pointFill="white", yScale = c(0:1), xtitle = "Day", ytitle = "Stress",mainTitle = "Transcript Negative Feelings Overlay" )
+
+ggplot2.multiplot(St_Fc_plot_P3,St_Sp_plot_P3,St_Tr_plot_P3, cols=1)
+
+```
+
+## Histogram Plots
+
+```{r Dat_Hist}
+ggplot2.multiplot(St_Fc_plot_P1,St_Sp_plot_P1,St_Tr_plot_P1, cols=1)
+
+Hist_Fc_P1<-ggplot2.histogram(data=Dat, xName= 'Fc_Happy',groupName='Time',position="stack", legendPosition='top', faceting=TRUE, facetingVarNames="Subject", xtitle = "Score", mainTitle = "FAU Positive Feelings Histogram")
+
+Hist_Sp_P1<-ggplot2.histogram(data=Dat, xName= 'Sp_Happy',groupName='Time',position="stack", legendPosition='top', faceting=TRUE, facetingVarNames="Subject", xtitle = "Score", mainTitle = "Speech Positive Feelings Histogram")
+
+Hist_Tr_P1<-ggplot2.histogram(data=Dat, xName= 'Tr_Happy',groupName='Time',position="stack", legendPosition='top', faceting=TRUE, facetingVarNames="Subject", xtitle = "Score", mainTitle = "Transcipt Positive Feelings Histogram")
+
+ggplot2.multiplot(Hist_Fc_P1,Hist_Sp_P1,Hist_Tr_P1, cols=2)
+
+ggplot2.multiplot(St_Fc_plot_P1,St_Sp_plot_P1,St_Tr_plot_P1, cols=1)
+
+Hist_Fc_St<-ggplot2.histogram(data=Dat, xName= 'Fc_Stressed',groupName='Time',position="stack", legendPosition='top', faceting=TRUE, facetingVarNames="Subject", xtitle = "Score", mainTitle = "FAU Negative Feelings Histogram")
+
+Hist_Sp_St<-ggplot2.histogram(data=Dat, xName= 'Sp_Stressed',groupName='Time',position="stack", legendPosition='top', faceting=TRUE, facetingVarNames="Subject", xtitle = "Score", mainTitle = "Speech Negative Feelings Histogram")
+
+Hist_Tr_St<-ggplot2.histogram(data=Dat, xName= 'Tr_Stressed',groupName='Time',position="stack", legendPosition='top', faceting=TRUE, facetingVarNames="Subject", xtitle = "Score", mainTitle = "Transcipt Negative Feelings Histogram")
+
+ggplot2.multiplot(Hist_Fc_St,Hist_Sp_St,Hist_Tr_St, cols=2)
+
+```
+
+## ECDF Plots
+
+```{r Speech}
+
+ECDF_Fc_Hap<-ggplot(Dat, aes(Fc_Happy, colour = Subject),mainTitle = "FAU Positive Feelings ECDF Plot") + stat_ecdf(geom = "point")
+ECDF_Sp_Hap<-ggplot(Dat, aes(Sp_Happy, colour = Subject),mainTitle = "Speech Positive Feelings ECDF Plot") + stat_ecdf(geom = "point")
+ECDF_Tr_Hap<-ggplot(Dat, aes(Tr_Happy, colour = Subject),mainTitle = "Transcipt Positive Feelings ECDF Plot") + stat_ecdf(geom = "point")
+
+ggplot2.multiplot(ECDF_Fc_Hap,ECDF_Sp_Hap,ECDF_Tr_Hap, cols=2)
+
+ECDF_Fc_St<-ggplot(Dat, aes(Fc_Stressed, colour = Subject),mainTitle = "FAU Negative Feelings ECDF Plot") + stat_ecdf(geom = "point")
+ECDF_Sp_St<-ggplot(Dat, aes(Sp_Stressed, colour = Subject),mainTitle = "Speech Negative Feelings ECDF Plot") + stat_ecdf(geom = "point")
+ECDF_Tr_St<-ggplot(Dat, aes(Tr_Stressed, colour = Subject),mainTitle = "Transcipt Negative Feelings ECDF Plot") + stat_ecdf(geom = "point")
+
+ggplot2.multiplot(ECDF_Fc_St,ECDF_Sp_St,ECDF_Tr_St, cols=2)
+
+```
+
+## QQ Plots
+
+```{r Speech}
+
+qq_Fc_hap <- qplot(sample = Fc_Happy, data = Dat, color=Subject, shape=Subject)+
+labs(title="FAU Positive Feelings \nQQ Plot",
+       y = "Score")
+
+qq_Sp_hap <- qplot(sample = Sp_Happy, data = Dat, color=Subject, shape=Subject)+
+labs(title="Speech Positive Feelings \nQQ Plot",
+       y = "Score")
+
+qq_Tr_hap <- qplot(sample = Tr_Happy, data = Dat, color=Subject, shape=Subject)+
+labs(title="Transcript Positive Feelings \nQQ Plot",
+       y = "Score")
+
+ggplot2.multiplot(qq_Fc_hap+ theme_classic(),qq_Sp_hap+ theme_classic(),qq_Tr_hap+ theme_classic(), cols=2)
+
+qq_Fc_St <- qplot(sample = Fc_Stressed, data = Dat, color=Subject, shape=Subject)+
+labs(title="FAU Negative Feelings \nQQ Plot",
+       y = "Score")
+
+qq_Sp_St <- qplot(sample = Sp_Stressed, data = Dat, color=Subject, shape=Subject)+
+labs(title="Speech Negative Feelings \nQQ Plot",
+       y = "Score")
+
+qq_Tr_St <- qplot(sample = Tr_Stressed, data = Dat, color=Subject, shape=Subject)+
+labs(title="Transcript Negative Feelings \nQQ Plot",
+       y = "Score")
+
+ggplot2.multiplot(qq_Fc_St+ theme_classic(),qq_Sp_St+ theme_classic(),qq_Tr_St+ theme_classic(), cols=2)
+
+```
+
+## T-Test Speech Data
+
+```{r T_Test_Sp}
+
+Early<-rbind.data.frame(cbind(Dat$Subject[1:5],Dat$Sp_Stressed[1:5]),cbind(Dat$Subject[1:5],Dat$Sp_Stressed[12:16]),cbind(Dat$Subject[1:5],Dat$Sp_Stressed[23:27]),cbind(Dat$Subject[34:38],Dat$Sp_Stressed[34:38]),cbind(Dat$Subject[34:38],Dat$Sp_Stressed[45:49]),cbind(Dat$Subject[34:38],Dat$Sp_Stressed[56:60]),cbind(Dat$Subject[67:71],Dat$Sp_Stressed[67:71]),cbind(Dat$Subject[67:71],Dat$Sp_Stressed[78:82]),cbind(Dat$Subject[67:71],Dat$Sp_Stressed[89:93]))
+
+Early[,3]<-"Early"
+
+colnames(Early) <- c("Subject", "Negativity", "Lockdown")
+
+Early$Negativity[Early$Negativity == 0] <- NA
+
+Early$Negativity <- as.numeric(Early$Negativity)
+
+
+
+Late<-rbind.data.frame(cbind(Dat$Subject[1:5],Dat$Sp_Stressed[6:10]),cbind(Dat$Subject[1:5],Dat$Sp_Stressed[17:21]),cbind(Dat$Subject[1:5],Dat$Sp_Stressed[28:32]),cbind(Dat$Subject[34:38],Dat$Sp_Stressed[39:43]),cbind(Dat$Subject[34:38],Dat$Sp_Stressed[50:54]),cbind(Dat$Subject[34:38],Dat$Sp_Stressed[61:65]),cbind(Dat$Subject[67:71],Dat$Sp_Stressed[72:76]),cbind(Dat$Subject[67:71],Dat$Sp_Stressed[83:87]),cbind(Dat$Subject[67:71],Dat$Sp_Stressed[94:98]))
+
+Late[,3]<-"Late"
+
+colnames(Late) <- c("Subject", "Negativity", "Lockdown")
+
+Late$Negativity[Late$Negativity == 0] <- NA
+
+Late$Negativity <- as.numeric(Late$Negativity)
+
+Hist_Early_Sp<-ggplot2.histogram(data=Early, xName= 'Negativity',legendPosition="top",
+    addMeanLine=TRUE, meanLineColor="Black", meanLineSize=1.5, mainTitle = "Speech Data from Early Lockdown")+geom_histogram(fill="cyan")
+
+Hist_Late_Sp<-ggplot2.histogram(data=Late, xName= 'Negativity', legendPosition="top",
+    addMeanLine=TRUE, meanLineColor="Black", meanLineSize=1.5, mainTitle = "Speech Data from Late Lockdown")+geom_histogram(fill="pink")
+
+ggplot2.multiplot(Hist_Early_Sp,Hist_Late_Sp, cols=1)
+
+All_Sp<-rbind(Early, Late)
+
+ggplot2.boxplot(data=All_Sp, xName='Lockdown',yName='Negativity', groupName='Lockdown',
+                brewerPalette="Paired", mainTitle = "Speech Data comparison" )
+
+t.test(Early$Negativity, Late$Negativity, paired = TRUE)
+
+```
+
+## T-Test Transcript Data
+
+```{r T_Test_Tr}
+
+Early_Tr<-rbind.data.frame(cbind(Dat$Subject[1:5],Dat$Tr_Stressed[1:5]),cbind(Dat$Subject[1:5],Dat$Tr_Stressed[12:16]),cbind(Dat$Subject[1:5],Dat$Tr_Stressed[23:27]),cbind(Dat$Subject[34:38],Dat$Tr_Stressed[34:38]),cbind(Dat$Subject[34:38],Dat$Tr_Stressed[45:49]),cbind(Dat$Subject[34:38],Dat$Tr_Stressed[56:60]),cbind(Dat$Subject[67:71],Dat$Tr_Stressed[67:71]),cbind(Dat$Subject[67:71],Dat$Tr_Stressed[78:82]),cbind(Dat$Subject[67:71],Dat$Tr_Stressed[89:93]))
+
+Early_Tr[,3]<-"Early"
+
+colnames(Early_Tr) <- c("Subject", "Negativity", "Lockdown")
+
+Early_Tr$Negativity[Early_Tr$Negativity == 0] <- NA
+
+Early_Tr$Negativity <- as.numeric(Early_Tr$Negativity)
+
+Late_Tr<-rbind.data.frame(cbind(Dat$Subject[1:5],Dat$Tr_Stressed[6:10]),cbind(Dat$Subject[1:5],Dat$Tr_Stressed[17:21]),cbind(Dat$Subject[1:5],Dat$Tr_Stressed[28:32]),cbind(Dat$Subject[34:38],Dat$Tr_Stressed[39:43]),cbind(Dat$Subject[34:38],Dat$Tr_Stressed[50:54]),cbind(Dat$Subject[34:38],Dat$Tr_Stressed[61:65]),cbind(Dat$Subject[67:71],Dat$Tr_Stressed[72:76]),cbind(Dat$Subject[67:71],Dat$Tr_Stressed[83:87]),cbind(Dat$Subject[67:71],Dat$Tr_Stressed[94:98]))
+
+Late_Tr[,3]<-"Late"
+
+colnames(Late_Tr) <- c("Subject", "Negativity", "Lockdown")
+
+Late_Tr$Negativity[Late_Tr$Negativity == 0] <- NA
+
+Late_Tr$Negativity <- as.numeric(Late_Tr$Negativity)
+
+Hist_Early_Tr_Sp<-ggplot2.histogram(data=Early_Tr, xName= 'Negativity',legendPosition="top",
+    addMeanLine=TRUE, meanLineColor="Black", meanLineSize=1.5, mainTitle = "Transcript Data from Early Lockdown")+geom_histogram(fill="cyan")
+
+Hist_Late_Tr_Sp<-ggplot2.histogram(data=Late_Tr, xName= 'Negativity', legendPosition="top",
+    addMeanLine=TRUE, meanLineColor="Black", meanLineSize=1.5, mainTitle = "Transcript Data from Late Lockdown")+geom_histogram(fill="pink")
+
+ggplot2.multiplot(Hist_Early_Tr_Sp,Hist_Late_Tr_Sp, cols=1)
+
+All_Tr<-rbind(Early_Tr, Late_Tr)
+
+ggplot2.boxplot(data=All_Tr, xName='Lockdown',yName='Negativity', groupName='Lockdown',
+                brewerPalette="Paired", mainTitle = "Speech Data comparison" )
+
+t.test(Early_Tr$Negativity, Late_Tr$Negativity, paired = TRUE)
+
+```
